@@ -133,8 +133,8 @@ class DrumKit {
     
         tempoText.innerText = e.target.value;
       }
-      updateTempo(e) {
-        this.bpm = e.target.value; //newly updated bpm after scrolling and changing it
+    updateTempo(e) {
+        this.bpm = e.target.value; //newly updated bpm from above after scrolling and changing it
         clearInterval(this.isPlaying);
         this.isPlaying = null;
         const playBtn = document.querySelector(".play");
@@ -173,8 +173,10 @@ drumKit.muteBtns.forEach(btn => {
 });
 
 drumKit.tempoSlider.addEventListener("input", function(e) {
+    //input will update the number while sliding and not letting go
   drumKit.changeTempo(e);
 });
 drumKit.tempoSlider.addEventListener("change", function(e) {
+    //by using change it will only run after we let go of the slider
   drumKit.updateTempo(e);
 });
